@@ -1,0 +1,63 @@
+.bootstrap-datetimepicker-widget.dropdown-menu {
+	width: 100% !important;
+	max-width: 350px;
+	padding: 1rem;
+	font-size: 13px;
+	overflow: auto hidden;
+	right: 0 !important;
+	left: auto !important;
+	z-index: 3;
+}
+.bootstrap-datetimepicker-widget > .row {
+	display: block;
+	margin: 0;
+}
+.bootstrap-datetimepicker-widget > .row > div {
+	max-width: initial;
+	padding: 0;
+}
+.bootstrap-datetimepicker-widget table td.day {
+	height: auto;
+	line-height: 1;
+}
+.bootstrap-datetimepicker-widget .table th, .bootstrap-datetimepicker-widget .table td {
+	padding: .65rem;
+}
+.bootstrap-datetimepicker-widget .timepicker-hour, .bootstrap-datetimepicker-widget .timepicker-minute, .bootstrap-datetimepicker-widget .timepicker-second {
+	font-size: 13px;
+}
+.bootstrap-datetimepicker-widget.usetwentyfour td.hour {
+	height: 40px;
+	line-height: 1;
+}
+.datepicker .table thead th:first-child, .datepicker .table thead td:first-child {
+	border-top-left-radius: .25rem;
+}
+.datepicker .table thead th:last-child, .datepicker .table thead td:last-child {
+	border-top-right-radius: .25rem;
+}
+.datepicker .table thead th {
+	border-bottom: 0;
+}
+.timepicker {
+	border-top: 1px solid #ddd;
+	margin-top: 1.25rem;
+	padding-top: .5rem !important;
+}
+.timepicker-picker {
+	width: 130px;
+	margin: auto;
+}
+.timepicker-picker table > tr:first-child,
+.timepicker-picker table > tr:last-child {
+	display: none;
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover,
+.bootstrap-datetimepicker-widget table td span.active {
+	background-color: #577ea5;
+}
+.bootstrap-datetimepicker-widget table td.today::before {
+	border-bottom-color: #577ea5;
+}
