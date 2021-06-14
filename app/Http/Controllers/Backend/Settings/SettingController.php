@@ -139,7 +139,7 @@ class SettingController extends Controller
              * hapus file sebelumnya
              */
             if (!empty($favicon_name)) {
-                Storage::disk('public')->delete("media/{$favicon_name}");
+                Storage::delete("media/{$favicon_name}");
             }
 
             // create unique name
