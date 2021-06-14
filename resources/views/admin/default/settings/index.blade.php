@@ -124,11 +124,11 @@
                         <div class="file-uploader" id="file-uploader">
                             <img src="{{ $setting->logo  ? url("storage/{$setting->logo}") : "" }}" id="image-preview" class="img-fluid d-block mb-3" data-url="welcome_bbb7bff8-99c9-453e-bc42-7b61a4cebcd6.png" data-source="db">
                         </div>
-                        <div id="preview-img">
+                        <div id="preview-img2">
 
                         </div>
                         <br>
-                        <input type="file" name="logo" id="exampleFormControlFile1" class="form-control  @error('logo') is-invalid @enderror" value="">
+                        <input type="file" name="logo" id="exampleFormControlFile2" class="form-control  @error('logo') is-invalid @enderror" value="">
                         @error('logo')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

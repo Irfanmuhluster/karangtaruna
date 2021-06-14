@@ -99,6 +99,35 @@
               }
           }
       }
+
+
+      const fileList2 = document.getElementById("preview-img2");
+
+      const fileSelect2 = document.getElementById("exampleFormControlFile2");
+      fileSelect2.addEventListener("change", handleFiles2);
+      function handleFiles2() {
+          if (!this.files.length) {
+              fileList2.innerHTML = "<p>No files selected!</p>";
+          } else {
+              fileList2.innerHTML = "";
+              const list = document.createElement("ul");
+              list.style.listStyle = "none";
+              fileList2.appendChild(list);
+              for (let i = 0; i < this.files.length; i++) {
+                    const li = document.createElement("li");
+                    list.appendChild(li);
+                                  
+                    const img = document.createElement("img");
+                    img.classList.add("img-thumbnail");
+                    img.src = URL.createObjectURL(this.files[i]);
+                    img.width = 600;
+                    img.onload = function() {
+                    URL.revokeObjectURL(this.src);
+              }
+              li.appendChild(img);                      
+              }
+          }
+      }
   })  
   </script>
 </head>
