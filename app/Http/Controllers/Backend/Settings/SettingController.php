@@ -157,7 +157,7 @@ class SettingController extends Controller
              * hapus file sebelumnya
              */
             if (!empty($logo_name)) {
-                Storage::disk('public')->delete("media/{$logo_name}");
+                Storage::delete("media/{$logo_name}");
             }
 
             // create unique name
