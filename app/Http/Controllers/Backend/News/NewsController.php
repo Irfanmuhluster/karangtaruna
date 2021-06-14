@@ -85,7 +85,8 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->image = $image_original_name;
         $news->content = html_entity_decode($request->content);
-
+        $news->tags = $request->keywords;
+        
 
         $news->slug = ($request->slug != null ) ? $request->slug : date("dmYs").'-'.Str::slug($request->title);
         $news->publish = $request->publish ?? 0;
@@ -171,6 +172,7 @@ class NewsController extends Controller
         // $news->image = $image_original_name;
         $news->content = html_entity_decode($request->content);
         $news->slug = ($request->slug != null ) ? $request->slug : date("dmYs").'-'.Str::slug($request->title);
+        $news->tags = $request->keywords;
         $news->publish = $request->publish ?? 0;
         $news->created_by_id = \Auth::id();
 

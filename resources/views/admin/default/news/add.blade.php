@@ -74,6 +74,14 @@
                     </div>
                 </div>
 
+                <div class="form-group ">
+                    <label for="title"><strong>Keyword</strong> <span class="text-danger">*</span></label>
+                    <input type="text" name="keyword" id="keywords" class="form-control @error('keywords') is-invalid @enderror" value="{{ old('keywords') }}" placeholder="keyword 1, keyword 2, keyword 3" /> 
+                    @error('keyword')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="form-group" >
                     <label for="message"><strong>Publish ?</strong> <span class="text-danger">*</span></label> <br>
                     <div class="icheck-primary">

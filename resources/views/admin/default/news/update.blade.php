@@ -78,6 +78,14 @@
                     </div>
                 </div>
 
+                <div class="form-group ">
+                    <label for="title"><strong>Keyword</strong> <span class="text-danger"></span></label>
+                    <input type="text" name="keywords" id="keywords" class="form-control @error('keywords') is-invalid @enderror" value="{{ old('keywords', $news->tags) }}" placeholder="keyord 1, keyword 2 " /> 
+                    @error('keyword')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="form-group" >
                     <label for="message"><strong>Publish ?</strong> <span class="text-danger">*</span></label> <br>
                     <div class="icheck-primary">

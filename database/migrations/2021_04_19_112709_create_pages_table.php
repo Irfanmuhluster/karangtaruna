@@ -18,6 +18,7 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('content')->nullable();
+            $table->string('tags')->nullable();
             $table->string('image')->nullable();
             $table->boolean('published')->default(0);
             $table->integer('created_by_id');
