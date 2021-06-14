@@ -121,9 +121,9 @@
                     img.classList.add("img-thumbnail");
                     img.src = URL.createObjectURL(this.files[i]);
                     img.width = 600;
-                    img.onload = function() {
-                    URL.revokeObjectURL(this.src);
-              }
+                //     img.onload = function() {
+                //     URL.revokeObjectURL(this.src);
+                // }
               li.appendChild(img);                      
               }
           }
