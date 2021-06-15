@@ -6,7 +6,7 @@
   {{-- "default-src * data: 'unsafe-eval' 'unsafe-inline' blob:" --}}
   <meta http-equiv="Content-Security-Policy" content="worker-src blob:; 
   child-src blob: gap:;
-  img-src 'self' blob: data:;
+  img-src 'self' blob: data: {{ url('/') }};
   default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
