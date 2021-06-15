@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; default-src 'self' {{ url('/') }}">
+  <meta http-equiv="Content-Security-Policy" content="img-src 'self' {{ url('/') }};">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>AdminLTE 3 | Dashboard 3</title>
