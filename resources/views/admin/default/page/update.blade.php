@@ -78,7 +78,7 @@
                     <label for="message"><strong>Publish ?</strong> <span class="text-danger">*</span></label> <br>
                     <div class="icheck-primary">
                         <input type="hidden" name="publish" value="0" />
-                        <input type="checkbox" name="publish" id="checkboxPrimary1" {{ ($page->publish == 1) ? 'checked=""' : '' }} value="{{ old('publish', $page->published) }}">
+                        <input type="checkbox" name="publish" id="checkboxPrimary1" {{ ($page->published == 1) ? 'checked=""' : '' }} value="{{ old('publish', $page->published) }}">
                         <label for="checkboxPrimary1">
                         </label>
                     </div>
