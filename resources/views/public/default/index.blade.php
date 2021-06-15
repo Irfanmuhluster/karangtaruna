@@ -138,7 +138,7 @@
                         <div class="m-2 p-3 border border-1 ronded rounded-3 bg-lightgreen">
                             <div class="btn btn-sm text-white rounded rounded-3 bg-success mb-3">{{ $item->every }}</div>
                             <p class="fw-bolder"> {{ $item->title }} </p>
-                            <p class="fs-7 text-muted"> {{ $item->content }} </p>
+                            <p class="fs-7 text-muted"> {!! $item->content !!} </p>
                         </div>
                         @endforeach
                         
