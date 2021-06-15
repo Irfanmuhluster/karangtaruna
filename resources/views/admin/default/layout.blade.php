@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{-- "default-src * data: 'unsafe-eval' 'unsafe-inline' blob:" --}}
-  <meta http-equiv="Content-Security-Policy" content="worker-src blob:; child-src blob: gap:; img-src 'self' data: ; object-src 'self' blob:; default-src * 'self' 'unsafe-inline' 'unsafe-eval' blob: data: gap: content:">
+  <meta http-equiv="Content-Security-Policy" content="worker-src blob:; child-src blob: gap:; img-src 'self' blob: data: ; object-src 'self' blob:; default-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: gap: content:">
   {{-- <meta http-equiv="Content-Security-Policy" content="worker-src blob:; child-src blob: gap:; img-src 'self' blob: data:; object-src 'self' blob:; default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:"> --}}
   
   <meta http-equiv="x-ua-compatible" content="ie=edge">
