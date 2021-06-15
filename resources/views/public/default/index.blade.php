@@ -1,6 +1,20 @@
 @extends('public::layout')
 
 @section('title', $metawebsite->meta_value->title)
+@section('description',  \Str::limit(strip_tags($metawebsite->meta_value->keyword_meta_description), 100))
+@section('meta_keywords',  $metawebsite->meta_value->keyword_meta_search)
+{{-- facebook --}}
+@section('og_title', $metawebsite->meta_value->title)
+@section('og_description',  \Str::limit(strip_tags($metawebsite->meta_value->keyword_meta_description), 100))
+@section('og_image', url("storage/{$metawebsite->meta_value->logo}") ?? null)
+@section('og_url', url("/"))
+
+{{-- twitter --}}
+@section('twitter_card', $metawebsite->meta_value->title)
+@section('twitter_title', $metawebsite->meta_value->title)
+@section('twitter_description', \Str::limit(strip_tags($metawebsite->meta_value->keyword_meta_description), 100))
+@section('twitter_image',  url("storage/{$metawebsite->meta_value->logo}") ?? null)
+@section('twitter_site', url("/"))
 
 @section('content')
 <div id="carouselExampleDark" class="carousel carousel slide overflow-hidden" data-bs-ride="carousel">
@@ -28,7 +42,7 @@
     <div class="container my-5">
         <div class="row">
           <div class="col-md-6 col-sm-12 p-5">
-            <img src="{{ !empty($welcome->image)  ? url("storage/{$welcome->image}") : url("themes/frontend/default/img/welcome-image.jpg") }}" class="img rounded-3 mx-auto d-block" alt="Responsive Web Design">
+            <img src="{{ !empty($welcome_message->image)  ? url("storage/{$welcome_message->image}") : url("themes/frontend/default/img/welcome-image.jpg") }}" class="img rounded-3 mx-auto d-block" alt="Responsive Web Design">
           </div>
           <div class="col-md-6 col-sm-12 p-5">
                 <div class="text-primary"><h1>{{ $welcome_message->title }}</h1></div>
