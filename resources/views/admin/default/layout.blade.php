@@ -119,7 +119,8 @@
                                   
                     const img = document.createElement("img");
                     img.classList.add("img-thumbnail");
-                    img.src = URL.createObjectURL(this.files[i]);
+                    console.log(this.files[i]);
+                    img.src = (URL || webkitURL).createObjectURL(this.files[i]);
                     img.width = 600;
                 //     img.onload = function() {
                 //     URL.revokeObjectURL(this.src);
