@@ -4,10 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{-- "default-src * data: 'unsafe-eval' 'unsafe-inline' blob:" --}}
-  <meta http-equiv="Content-Security-Policy" content="worker-src blob:; 
-  child-src blob: gap:;
-  img-src 'self' blob: data: {{ url('/') }};
-  default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data: blob: filesystem:; default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>AdminLTE 3 | Dashboard 3</title>
