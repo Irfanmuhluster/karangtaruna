@@ -56,7 +56,7 @@ class PagesController extends Controller
     public function store(StorePage $request)
     {
         //
-        if(!\Auth::user()->can('store_page'))
+        if(!\Auth::user()->can('create_page'))
         {
             abort('403', 'Hak Akses Tidak Diijinkan');
         }
