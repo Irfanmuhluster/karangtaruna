@@ -6,12 +6,16 @@ use App\Models\Metadata;
 use App\Models\User;
 use Carbon\Carbon;
 use Harimayco\Menu\Models\Menus;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Shetabit\Visitor\Models\Visit;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +29,161 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    
+    /**
+     * Register array function yang akan diteruskan ke view
+     */
+    public function registerViewFunctions()
+    {
+        return [
+            'get' => function () {
+                return 'sample from dashboard';
+            },
+
+            /**
+             * untuk ambil statistik visitor pada periode tertentu
+             *
+             * @param string $periode online|today|last_week|last_month|last_year||all_time
+             * @author Almazari <almazary@jogjacamp.co.id>
+             */
+            'visitor_stats' => function ($periode) {
+                switch ($periode) {
+                    case 'online':
+                        /**
+                         * cek dulu dicache ada gak
+                         */
+                        $cache_key = "visitor_stats_online_public";
+                        $agg = Cache::get($cache_key);
+                        // dd('woyy'.website()->id);
+                        if (is_null($agg)) {
+                            $agg = Visit::
+                                select(DB::raw('count(distinct(concat(`ip`, date(`created_at`)))) as aggregate'))
+                                ->where('updated_at', '>=', now()->subMinutes(2)->format('Y-m-d H:i:s'))
+                                ->whereNull('visitor_id')
+                                ->first()['aggregate'];
+
+                            /**
+                             * simpan cache 1 menit
+                             */
+                            Cache::put($cache_key, $agg, now()->addMinute());
+                        }
+
+                        return $agg;
+                        break;
+
+                    case 'today':
+                        /**
+                         * cek dulu dicache ada gak
+                         */
+                        $cache_key =  "visitor_stats_today_public";
+                        $agg = Cache::get($cache_key);
+                        // dd($agg);
+                        if (is_null($agg)) {
+                            $agg = Visit::
+                                select(DB::raw('count(distinct(concat(`ip`, date(`created_at`)))) as aggregate'))
+                                ->whereDate('created_at', now()->format('Y-m-d'))
+                                ->whereNull('visitor_id')
+                                ->first()['aggregate'];
+                            
+                            /**
+                             * simpan cache 5 menit
+                             */
+                            Cache::put($cache_key, $agg, now()->addMinutes(10));
+                        }
+                        // dd($agg);
+                        return $agg;
+                        break;
+
+                    case 'last_week':
+                        /**
+                         * cek dulu dicache ada gak
+                         */
+                        $cache_key =  "visitor_stats_last_week_public";
+                        $agg = Cache::get($cache_key);
+                        if (is_null($agg)) {
+                            $agg = Visit::
+                                select(DB::raw('count(distinct(concat(`ip`, date(`created_at`)))) as aggregate'))
+                                ->whereDate('created_at', '>=', now()->subWeek()->format('Y-m-d'))
+                                ->whereNull('visitor_id')
+                                ->first()['aggregate'];
+
+                            /**
+                             * simpan cache 2 jam
+                             */
+                            Cache::put($cache_key, $agg, now()->addMinutes(10));
+                        }
+
+                        return $agg;
+                        break;
+
+                    case 'last_month':
+                        /**
+                         * cek dulu dicache ada gak
+                         */
+                        $cache_key =  "visitor_stats_last_month_public";
+                        $agg = Cache::get($cache_key);
+                        if (is_null($agg)) {
+                            $agg = Visit::
+                                select(DB::raw('count(distinct(concat(`ip`, date(`created_at`)))) as aggregate'))
+                                ->whereDate('created_at', '>=', now()->subMonth()->format('Y-m-d'))
+                                ->whereNull('visitor_id')
+                                ->first()['aggregate'];
+
+                            /**
+                             * simpan cache 12 jam
+                             */
+                            Cache::put($cache_key, $agg, now()->addMinutes(10));
+                        }
+
+                        return $agg;
+                        break;
+
+                    case 'last_year':
+                        /**
+                         * cek dulu dicache ada gak
+                         */
+                        $cache_key = "visitor_stats_last_year_public";
+                        $agg = Cache::get($cache_key);
+                        if (is_null($agg)) {
+                            $agg = Visit::
+                                select(DB::raw('count(distinct(concat(`ip`, date(`created_at`)))) as aggregate'))
+                                ->whereDate('created_at', '>=', now()->subYear()->format('Y-m-d'))
+                                ->whereNull('visitor_id')
+                                ->first()['aggregate'];
+
+                            /**
+                             * simpan cache 12 jam
+                             */
+                            Cache::put($cache_key, $agg, now()->addMinutes(10));
+                        }
+
+                        return $agg;
+                        break;
+
+                    case 'all_time':
+                        /**
+                         * cek dulu dicache ada gak
+                         */
+                        $cache_key = "visitor_stats_all_time_public";
+                        $agg = Cache::get($cache_key);
+                        if (is_null($agg)) {
+                            $agg = Visit::
+                                select(DB::raw('count(distinct(concat(`ip`, date(`created_at`)))) as aggregate'))
+                                ->whereNull('visitor_id')
+                                ->first()['aggregate'];
+
+                            /**
+                             * simpan cache 12 jam
+                             */
+                            Cache::put($cache_key, $agg, now()->addMinutes(10));
+                        }
+
+                        return $agg;
+                        break;
+                }
+            },
+        ];
+    }
     /**
      * Bootstrap any application services.
      *
@@ -33,6 +192,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Request::visitor()->visit();
         Carbon::setLocale('id');
         $admin_theme = config('app.setting.backend.theme');
         View::addNamespace('admin', resource_path("views/admin/{$admin_theme}"));
@@ -78,8 +238,8 @@ class AppServiceProvider extends ServiceProvider
                     'favicon' => '',
                     'logo' => '' ,
                     'footer' => 'Copyright © 2020' ,
-                    'keyword_meta_search' => '' ,
-                    'keyword_description' => '',
+                    'keyword_meta_search' => 'keyword website, disini' ,
+                    'keyword_meta_description' => 'deskripsi website disini',
                 ]
             ];
 
@@ -93,8 +253,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('metawebsite', $meta);
             $view->with('metasosialmedia', $sosialmedia);
 
+            
+            View::share('_mf', $this->registerViewFunctions());
         });
       
+        
         // register define gates from config
         // foreach (config('admin.gates') as $name => $views) {
         //     if (is_array($views)) {
@@ -104,4 +267,9 @@ class AppServiceProvider extends ServiceProvider
         //     }
         // }
     }
+
+    /**
+     * Register function yang akan dipanggil diview
+     */
+    // $modulefunction->register('dashboard', $this->registerViewFunctions());
 }

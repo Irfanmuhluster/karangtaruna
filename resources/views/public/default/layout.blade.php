@@ -157,8 +157,48 @@
             </div>
         </div>
         <div class="bg-dark border-top p-2">
+          <div class="container">
+            <div class="d-flex justify-content-between">
+              <div>
+                <p>© 2019 - Idcodewebs.</p>
+              </div>
+              <div id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                  <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+                </svg> Statistik Pengunjung | Hari ini {{ $_mf['visitor_stats']('today') }} Pengunjung
+              </div>
+              <div class="text-white dropdown-menu dropdown-menu-right shadow bg-dark rounded-2" aria-labelledby="dropdownMenuButton1">
+                <div class="dropdown-header text-primary px-3 mt-1">Statistik Pengunjung</div>
+                <ul class="list-group-flush px-3 mb-0 fs-1">
+                  <li class="list-group-item text-white  bg-transparent border-dark px-0 d-flex justify-content-between">
+                    <span class="ws-nowrap">Online</span>
+                    <span class="ml-4">{{ $_mf['visitor_stats']('online') }}</span>
+                  </li>
+                  <li class="list-group-item text-white  bg-transparent border-dark px-0 d-flex justify-content-between">
+                    <span class="ws-nowrap">Hari ini</span>
+                    <span class="ml-4">{{ $_mf['visitor_stats']('today') }}</span>
+                  </li>
+                  <li class="list-group-item text-white  bg-transparent border-dark px-0 d-flex justify-content-between">
+                    <span class="ws-nowrap">Minggu ini</span>
+                    <span class="ml-4">{{ $_mf['visitor_stats']('last_week') }}</span>
+                  </li>
+                  <li class="list-group-item text-white  bg-transparent border-dark px-0 d-flex justify-content-between">
+                    <span class="ws-nowrap">Bulan ini</span>
+                    <span class="ml-4">{{ $_mf['visitor_stats']('last_month') }}</span>
+                  </li>
+                  <li class="list-group-item text-white  bg-transparent border-dark px-0 d-flex justify-content-between">
+                    <span class="ws-nowrap">Tahun ini</span>
+                    <span class="ml-4">{{ $_mf['visitor_stats']('last_year') }}</span>
+                  </li>
+                  <li class="list-group-item text-white  bg-transparent border-dark px-0 d-flex justify-content-between">
+                    <span class="ws-nowrap">Total</span>
+                    <span class="ml-4">{{ $_mf['visitor_stats']('all_time') }}</span>
+                  </li>
+                </ul>
+              </div>
     
-                <p>{{ $metawebsite->meta_value->footer }} by <a href="https://idcodewebs.com">Idcodewebs.</a></p>
+            </div>
+          </div>
     
         </div>
       </div>
