@@ -39,6 +39,6 @@ class CreateVisitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('visitor.table_name'));
+        Schema::dropIfExists(config('shetabit_visits'));
     }
 }
