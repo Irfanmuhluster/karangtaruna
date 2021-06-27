@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
+        'visitor' => Shetabit\Visitor\Facade\Visitor::class,
         // 'visitors' => \Shetabit\Visitor\Middlewares\LogVisits::class,
 
     ],
