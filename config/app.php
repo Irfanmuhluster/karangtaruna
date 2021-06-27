@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        
+        // Shetabit\Visitor\Middlewares\LogVisits::class,
         Shetabit\Visitor\Provider\VisitorServiceProvider::class,
 
         /*

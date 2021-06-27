@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Shetabit\Visitor\Middlewares\LogVisits;
 use Shetabit\Visitor\Models\Visit;
 use Illuminate\Support\Facades\DB;
 
@@ -192,6 +193,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        
         Request::visitor()->visit();
         Carbon::setLocale('id');
         $admin_theme = config('app.setting.backend.theme');
