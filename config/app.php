@@ -161,8 +161,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        
-        // Shetabit\Visitor\Middlewares\LogVisits::class,
         Shetabit\Visitor\Provider\VisitorServiceProvider::class,
 
         /*
@@ -229,9 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        // 'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
-        'visitor' => Shetabit\Visitor\Facade\Visitor::class,
-        'Visitor' => \Shetabit\Visitor\Middlewares\LogVisits::class,
+        'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
 
     ],
 
