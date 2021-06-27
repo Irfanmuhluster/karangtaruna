@@ -8,8 +8,8 @@
         <div class="padding-lr">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb hidden-xs">
-                    <li class="breadcrumb-item"><a href="admin.html">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="admin-agenda.html">Pengaturan Website</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pengaturan Website</a></li>
                     <li class="breadcrumb-item">Pesan Selamat Datang</li>
                 </ol>
             </nav>
