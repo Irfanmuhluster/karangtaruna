@@ -219,7 +219,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('public::*', function ($view) {
             // top nav
-            // Request::visitor()->visit();
+            Request::visitor()->visit();
             $menu = Menus::where('id', 1)->with('items')->first();
             //you can access by model result
 
