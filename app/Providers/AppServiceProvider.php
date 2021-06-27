@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Shetabit\Visitor\Middlewares\LogVisits;
 use Shetabit\Visitor\Models\Visit;
+use Shetabit\Visitor\Traits\Visitor;
 use Shetabit\Visitor\Traits\Visitable;
 use Illuminate\Support\Facades\DB;
 
