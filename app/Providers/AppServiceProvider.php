@@ -194,7 +194,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         
-        // Request::visitor()->visit();
+        Request::visitor()->visit();
         Carbon::setLocale('id');
         $admin_theme = config('app.setting.backend.theme');
         View::addNamespace('admin', resource_path("views/admin/{$admin_theme}"));
