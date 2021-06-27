@@ -229,8 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
-        'visitors' => \Shetabit\Visitor\Middlewares\LogVisits::class,
+        'Visitor' => Shetabit\Visitor\Middlewares\LogVisits::class,
+        // 'visitors' => \Shetabit\Visitor\Middlewares\LogVisits::class,
 
     ],
 

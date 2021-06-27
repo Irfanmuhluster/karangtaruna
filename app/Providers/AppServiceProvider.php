@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Shetabit\Visitor\Middlewares\LogVisits;
 use Shetabit\Visitor\Models\Visit;
+use Shetabit\Visitor\Traits\Visitable;
 use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
@@ -194,7 +195,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         
-        Request::visitor()->visit();
+
         Carbon::setLocale('id');
         $admin_theme = config('app.setting.backend.theme');
         View::addNamespace('admin', resource_path("views/admin/{$admin_theme}"));
@@ -218,6 +219,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('public::*', function ($view) {
             // top nav
+            Request::visitor()->visit();
             $menu = Menus::where('id', 1)->with('items')->first();
             //you can access by model result
 
