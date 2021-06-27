@@ -13,7 +13,7 @@ class CreateVisitsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('visitor.table_name'), function (Blueprint $table) {
+        Schema::create('shetabit_visits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('method')->nullable();
             $table->mediumText('request')->nullable();
