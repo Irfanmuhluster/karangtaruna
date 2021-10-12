@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 
 class PermissionSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         //
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        // app()[PermissionRegistrar::class]->forgetCachedPermissions();
         $this->generateFor('user', 'web', 'pengguna');
         $this->generateFor('role', 'web',  'peran');
 
@@ -70,11 +71,11 @@ class PermissionSeeder extends Seeder
 
     }
 
-    public function generateFor($table,$guard,  $table_name)
+    public function generateFor($name, $guard,  $menu_name)
     {
-        Permission::create(['name' => 'read_'.$table, 'guard_name'=> $guard, 'menu_name' => $table_name]);
-        Permission::create(['name' => 'create_'.$table, 'guard_name'=> $guard, 'menu_name' => $table_name]);
-        Permission::create(['name' => 'edit_'.$table, 'guard_name'=> $guard, 'menu_name' => $table_name]);
-        Permission::create(['name' => 'delete_'.$table, 'guard_name'=> $guard, 'menu_name' => $table_name]);
+        Permission::create(['name' => 'read_'.$name, 'guard_name'=> $guard, 'menu_name' => $menu_name]);
+        Permission::create(['name' => 'create_'.$name, 'guard_name'=> $guard, 'menu_name' => $menu_name]);
+        Permission::create(['name' => 'edit_'.$name, 'guard_name'=> $guard, 'menu_name' => $menu_name]);
+        Permission::create(['name' => 'delete_'.$name, 'guard_name'=> $guard, 'menu_name' => $menu_name]);
     }
 }

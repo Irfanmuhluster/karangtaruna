@@ -22,9 +22,9 @@ class PermissionController extends Controller
         {
             abort('403');
         }
-        $permission = [];
-        $hasPermission = [];
-        $getRole = [];
+        // $permission = [];
+        // $hasPermission = [];
+        // $getRole = [];
         
         $roles = Role::all()->pluck('name');
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row mt-5 min-h-title">
+<div class="min-h-title">
     <div class="padding-lr">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb hidden-xs">
@@ -49,33 +49,47 @@
         <div class="col-xl-12 col-lg-12  col-md-12 mx-auto">
             <div class="row">
             @foreach ($datagallery as $index => $data) 
-            <div class="col-md-3 col-sm-10 my-3">
-                <div class="card p-1 m-3">
-                    <img src="{{ url("storage/gallery-{$data->images}") }}" class="card-img-top" alt="{{ $data->caption }}">
-                        <div class="card-body">
-                        <h5 class="card-title">{{ $data->caption }}</h5>
-                        
-                        <div class="text-right">
-                            <div class="pt-3">
-                                @if ($data->publish == 1)
-                                    <i class="fas fa-circle text-success font-xs m-1"></i> Terbit                                                                               
-                                @else
-                                    <i class="fas fa-circle text-danger font-xs m-1"></i> Draft  
-                                @endif
+            <div class="col-xl-3 col-lg-4 col-md-12" style="position: relative;">
+                <div class="card" style="position: relative;">
+                    <div class="card-body px-2 position-relative">
+                        <div class="d-flex mt-auto justify-content-center">
+                            
+                            
+                            <div class="item7-card-img item-center justify-content-center text-center">
+                                <a href="#"></a>
+                                <img src="{{ url("storage/gallery-{$data->images}") }}" alt="img" class="card-img-top rounded">
                             </div>
-                            <div class="btn-group pt-1">
-                                <a href="{{ route('admin.gallery.edit', $data->id ) }}" class="btn btn-md btn-primary pull-right edit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                </svg>
-                                </a>
-                                <div class="btn btn-md btn-danger pull-right delete" title="Hapus" data-toggle="modal" data-target="#deleteMenu-{{$index}}" data-id="2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                </svg>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 d-flex" >
+                        <div class="media-user mr-2">
+                            <div>
+                                <h5>{{ $data->caption }}</h5>
+                                <small class="d-block text-muted">
+                                    @if ($data->publish == 1)
+                                        <i class="fas fa-circle text-success font-xs m-1"></i> Terbit                                                                               
+                                    @else
+                                        <i class="fas fa-circle text-danger font-xs m-1"></i> Draft  
+                                    @endif    
+                                </small>
+                            </div>
+                            {{-- <div>
+                                <div>
+                                    <div class="font-weight-semibold text-warning">Rp. {{ number_format($item->price-($item->price*$item->discount/100)) }}</div>
+                                    <small class="d-block text-muted">Rp. <strike>{{ number_format($item->price) }}</strike></small>
                                 </div>
+                            </div> --}}
+                        </div>
+                        
+                        
+                        <div class="ml-auto text-muted" style="position: relative;">
+                            <a class="option-dots new-list2" data-toggle="dropdown" role="button" style="cursor: pointer"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg></a>
+                            <div class="dropdown-menu tx-13 dropdown-menu-right"  style="z-index: 1001; ">
+                                <a class="dropdown-item" href="{{ route('admin.gallery.edit', $data->id ) }}">Edit</a>
+                                <a class="dropdown-item" title="Hapus" data-toggle="modal" data-target="#deleteMenu-{{$index}}" data-id="2">Hapus</a>
+                                
                             </div>
                         </div>
                     </div>

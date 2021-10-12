@@ -18,6 +18,6 @@ class RoleSeeder extends Seeder
         //
         // app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
         Role::create(['name' => 'admin', 'guard_name' => 'web'])->givePermissionTo(Permission::all());
-        Role::create(['name' => 'moderator', 'guard_name' => 'web']);
+        Role::create(['name' => 'moderator', 'guard_name' => 'web'])->givePermissionTo('read_gallery');
     }
 }

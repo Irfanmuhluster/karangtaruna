@@ -60,7 +60,8 @@
 
                 <div class="form-group ">
                     <label for="title"><strong>Caption</strong> <span class="text-danger">*</span></label>
-                    <input type="text" name="caption" id="caption" class="form-control @error('caption') is-invalid @enderror" value="{{ old('caption') }}" placeholder="Caption" /> 
+                    <textarea type="text" name="caption" id="caption" class="form-control @error('caption') is-invalid @enderror" value="{{ old('caption') }}" placeholder="Caption">{{ old('caption') }}</textarea>
+                    {{-- <input type="text" name="caption" id="caption" class="form-control @error('caption') is-invalid @enderror" value="{{ old('caption') }}" placeholder="Caption" />  --}}
                     @error('caption')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

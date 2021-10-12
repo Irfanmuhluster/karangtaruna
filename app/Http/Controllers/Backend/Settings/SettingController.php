@@ -50,7 +50,7 @@ class SettingController extends Controller
                 'type' => 1,
             ]
         );
-        // dd($meta->meta_value);
+        // dd($meta);
         return view('admin::settings.index', ['setting' => $meta->value]);
     }
 
